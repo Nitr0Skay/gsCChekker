@@ -1,0 +1,22 @@
+{
+  "name": "gscchekker",
+  "version": "1.0.0",
+  "description": "The powerful tool to look for meta tag from Google",
+  "main": "gsCChekker.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Nitr0Skay/gsCChekker.git"
+  },
+  "author": "Nitr0Skay",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Nitr0Skay/gsCChekker/issues"
+  },
+  "homepage": "https://github.com/Nitr0Skay/gsCChekker#readme",
+  "dependencies": {
+    "puppeteer": "^19.4.0"
+  }
+}
