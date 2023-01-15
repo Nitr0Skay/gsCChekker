@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/Nitr0Skay/gsCChekker#readme",
   "dependencies": {
+    "prompt-sync": "^4.2.0",
     "puppeteer": "^19.4.0"
   }
 }
