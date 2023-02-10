@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pl" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Google Search Console Tool Checkker </title>
+</head>
+<body>
+    <header class="header" id="header">
+        <a href="/" title="Tytuł Strony">
+            <h1 class="title" id="title"> GSC Checker </h1>
+        </a>
+    </header>
+    
+    <main class="mainContent" id="mainContent">
+        <form method="GET" action="/result">
+            <label for="checkURL"> Czy podana strona ma Google Search Console Tool: </label>
+            <input type="url" name="checkURL" id="checkURL" placeholder="www.link.com" />
+            <input type="submit" value="Sprawdź" />
+        </form>
+
+        {{{ body }}} 
+    </main>
+
+    <footer class="footer" id="footer">
+        <p> Created by Nitr0Skay &copy; </p>
+    </footer>
+</body>
+</html>

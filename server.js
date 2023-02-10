@@ -1,39 +1,31 @@
-const http = require('http');
 const port = process.env.PORT || 5000;  
 const path = require('path');
-const fs = require('fs');
 const url = require('url');
-const indexPath = path.join(__dirname, '/index.html');
+const express = require('express');
+const hbs = require('express-handlebars');
+const app = express();
 
-http.createServer(async (req, res) => {
-    res.writeHead(200, {'Content-Type': 'text/html'});
-    
-    if(req.url === '/' && req.method === 'GET') {
-        res.end(fs.readFileSync(indexPath));
-    } else {
-        const query = url.parse(req.url, true).query;
-        const json = JSON.stringify(query);
-        const u = JSON.parse(json).url;
-        const gs = require('./gsCChekker.js');
-              gs(u).then(resolve => {
-                      if(resolve)   {
-                        res.end('This site has Google Search Console Tool');
-                      } else {
-                        res.end('This site probably has not Google Search Console Tool');
-                      }
-              });
-    }
-    // const gs = require('./gsCChekker.js');
-    //       gs(queryObject).then((resolve) => {
-    //             // if(resolve) {
-    //             //     res.end('This site has Google Search Console Tool');
-    //             // } else {
-    //             //     res.end('This site probably has not Google Search Console Tool');
-    //             // }
-    //             res.end(req.url);
-    //       }).catch((err) => {
-    //           res.end
-    //       });
-}).listen(port, () => {
-    console.log(`Listening on Port: ${port}`);
+app.engine('hbs', hbs.engine({ extname: 'hbs', layoutDir: './layouts' }));
+app.set('view engine', 'hbs');
+app.use(express.static(path.join(__dirname, '/public')));
+
+app.get('/', (req, res) => {
+  res.render('index');
+});
+
+app.get('/result', (req, res) => {
+  const gsc = require('./public/gsCChekker.js');
+  const checkingSite = url.parse(req.url, true).query;
+  const checkURL = checkingSite.checkURL;
+  gsc(checkURL).then((isGSC) => {
+    res.render('result', { isGSC: isGSC });
+  }).catch((error) => {
+    console.error(error.message);
+    res.render('result', { isError: true })
+  });
+});
+
+app.listen(port, (err) => {
+  if(err) throw err;
+  console.log(`Listening at port ${port}`);
 });
