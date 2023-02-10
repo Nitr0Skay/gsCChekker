@@ -1,9 +1,10 @@
 <section class="result">
+    <p> Podana i przeszukiwana strona: {{checkingSite}} </p>
     {{#if isGSC}}
-        <p class="info positive"> Ta strona jest w posiadaniu Google Search Console Tool </p>
+        <p class="positive"> Ta strona jest w posiadaniu Google Search Console Tool </p>
     {{else if isError}}
-        <p class="info error"> Przy sprawdzaniu podanej strony wystąpił jakiś błąd. Istnieje spore prawdopodobieństwo, że podany został zły adres URL, lub podana strona nie istnieje. </p>
+        <p class="error"> Przy sprawdzaniu podanej strony wystąpił jakiś błąd. Istnieje spore prawdopodobieństwo, że podany został zły adres URL, lub podana strona nie istnieje. </p>
     {{else}}
-        <p class="info negative"> Ta strona prawdopodobnie nie posiada Google Search Console Tool. A przynajmniej nie jest w posiadaniu <em> meta tagu </em> o nazwie <em> google-site-verification </em> </p>
+        <p class="negative"> Ta strona prawdopodobnie nie posiada Google Search Console Tool. A przynajmniej nie jest w posiadaniu <em> meta tagu </em> o nazwie <em> google-site-verification </em> </p>
     {{/if}} 
 </section>

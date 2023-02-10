@@ -18,10 +18,10 @@ app.get('/result', (req, res) => {
   const checkingSite = url.parse(req.url, true).query;
   const checkURL = checkingSite.checkURL;
   gsc(checkURL).then((isGSC) => {
-    res.render('result', { isGSC: isGSC });
+    res.render('result', { isGSC: isGSC, checkingSite: checkURL });
   }).catch((error) => {
     console.error(error.message);
-    res.render('result', { isError: true })
+    res.render('result', { isError: true, checkingSite: checkURL });
   });
 });
 
