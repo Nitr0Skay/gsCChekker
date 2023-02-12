@@ -4,7 +4,7 @@
   "description": "The powerful tool to look for meta tag from Google",
   "main": "gsCChekker.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "npm install && node server.js"
   },
   "repository": {
     "type": "git",
