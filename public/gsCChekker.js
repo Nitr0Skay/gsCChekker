@@ -5,8 +5,8 @@ module.exports = async function(url) {
     await page.goto(url, {waitUntil: 'domcontentloaded'});
     const GSC = await page.$("meta[name='google-site-verification']");
     const isGSC = (GSC === null) ? false : true;
-    page.close();
-    browser.close();
+    await page.close();  
+    await browser.close();
  
     return Promise.resolve(isGSC);
 }
